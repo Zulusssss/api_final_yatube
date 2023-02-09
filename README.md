@@ -5,13 +5,13 @@
 Клонируйте репозиторий к себе(fork), скачайте на свой пк(git clone). В терминале используйте pip install -r requirements.txt для установки всех необходимых библиотек.
 ## Примеры
 api/v1/posts/
-POST:
+### POST:
 {
   "text": "string",
   "image": "string",
   "group": 0
 }
-GET:
+### GET:
 {
 "count": 123,
 "next": "http://api.example.org/accounts/?offset=400&limit=100",
