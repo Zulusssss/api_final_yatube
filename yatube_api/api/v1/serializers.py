@@ -1,11 +1,13 @@
+import base64
+
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 from rest_framework.validators import UniqueTogetherValidator
-import base64
+
 from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
 
-from posts.models import Group, Post, Comment, Follow
+from posts.models import Post, Group, Comment, Follow
 
 User = get_user_model()
 
@@ -71,13 +73,6 @@ class FollowSerializer(serializers.ModelSerializer):
                         'на которого вы уже подписаны'
             )
         ]
-
-    def validate_following(self, value):
-        if isinstance(value, Group):
-            raise serializers.ValidationError(
-                'Группа должна быть записана через int'
-            )
-        return value
 
     def validate(self, data):
         if data['following'].id == self.context['request'].user.id:
